@@ -17,8 +17,8 @@
       <p style = "border-style: solid; padding:5px; margin-top: 5px; height: 100px;">
         <span id="myElement"></span>
        </p>
-       <button type="button" class="btn btn-dark btn-md" onclick="clickMe()"><i class="fas fa-arrow-left"></i> Previous</button>
-       <button type="button" class="btn btn-dark btn-md" onclick="clickMe()">Next <i class="fas fa-arrow-right"></i></button>
+       <a href="#" role="button" class="btn btn-dark btn-md" onclick="previousText()"><i class="fas fa-arrow-left"></i> Previous</a>
+       <button type="button" class="btn btn-dark btn-md" onclick="nextText()">Next <i class="fas fa-arrow-right"></i></button>
     </div>
 </div>
 
@@ -31,21 +31,40 @@
 
 <script type="text/javascript">
 
+var textNum = 0;
+
+var text = [
+"Hello all.",
+"How are you?",
+"I'm fine. Thanks."
+];
+
+
+
   $( document ).ready(function() {
-    speak();
+    speak(text[0]);
   });
 
-function speak() {
+function speak(text) {
     new TypeIt('#myElement','deleteSpeed:3000','cursor: true')
-      .type("Hope is the thing with feathers that perches in the soul - and sings the tunes without the words - and never stops at all.")
-      .pause(2000)
+      .type(text)
       // .delete()
       .go();
 }
 
-  function clickMe() {
-     // var textdata = $("#textData");
-     // textdata.text("Test");
+function nextText() {
+  if (textNum != (text.length - 1)) {
+    textNum++;
   }
+  speak(text[textNum]);
+}
+
+function previousText() {
+  if (textNum != 0) {
+    textNum--
+  }
+  speak(text[textNum]);
+}
+
 </script>
 </html>
