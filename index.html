@@ -13,13 +13,33 @@
 
   <div  class="container" style = "max-width: 1000px; padding-top: 20px; margin:auto;">
     <div style = "width: 90%; color:green; padding:5px; margin: auto; ">
-      <span style = "color:green;" >Data:</span>
+      <span id="myElement"></span>
       <p style = "border-style: solid; padding:5px; margin-top: 5px; height: 100px;">
-        <span id="myElement"></span>
+        <span id ="text"></span>
        </p>
        <a href="#" role="button" class="btn btn-dark btn-md" onclick="previousText()"><i class="fas fa-arrow-left"></i> Previous</a>
        <button type="button" class="btn btn-dark btn-md" onclick="nextText()">Next <i class="fas fa-arrow-right"></i></button>
     </div>
+</div>
+
+<div  class="container border" style = "overflow: scroll; height: 410px; width: 850 px; padding-top: 20px; margin:auto;">
+
+  <div  class="container" style = "padding-top: 20px; margin:auto;">
+    <div style = "width: 90%; color:green; padding:5px; margin: auto; ">
+      <span id="">View all:</span>
+      <p style = "border-style: solid; padding:5px; margin-top: 5px; height: 100px;">
+        <span id ="text">This is a test this is a test this is a testy</span>
+       </p>
+    </div>
+  </div>
+  <div  class="container" style = "padding-top: 20px; margin:auto;">
+    <div style = "width: 90%; color:green; padding:5px; margin: auto; ">
+      <p style = "border-style: solid; padding:5px; margin-top: 5px; height: 100px;">
+        <span id ="text">This is a test this is a test this is a testy</span>
+       </p>
+    </div>
+  </div>
+
 </div>
 
 </body>
@@ -42,28 +62,26 @@ var text = [
 
 
   $( document ).ready(function() {
-    speak(text[0]);
-  });
-
-function speak(text) {
     new TypeIt('#myElement','deleteSpeed:3000','cursor: true')
-      .type(text)
+      .type("Welcome. All is Hollow.")
       // .delete()
       .go();
-}
+
+  });
 
 function nextText() {
   if (textNum != (text.length - 1)) {
     textNum++;
   }
-  speak(text[textNum]);
+
+    $('#text').text(text[textNum]);
 }
 
 function previousText() {
   if (textNum != 0) {
     textNum--
   }
-  speak(text[textNum]);
+  $('#text').text(text[textNum]);
 }
 
 </script>
